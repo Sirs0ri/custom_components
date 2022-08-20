@@ -15,9 +15,9 @@ void SerialTextSensor::loop() {
 }
 
 void SerialTextSensor::handle_char_(uint8_t c) {
-  if (c == '\r')
+  if (c == '\n')
     return;
-  if (c == '\n') {
+  if (c == '\r') {
     std::string s(this->rx_message_.begin(), this->rx_message_.end());
     this->publish_state(s);
     this->rx_message_.clear();
